@@ -1,0 +1,66 @@
+<section >
+  <div 
+  class="row w-100% d-flex justify-content-center align-item-center m-0 bg-light"
+  style="padding-top: 8rem;height: 100vh;background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+"
+>
+    <div class="container">
+    
+<div class="container-fluid">
+    <table class="table  mt-5 text-light "  id="myTable">
+      <thead >
+        <tr>
+          {{!-- <th scope="col">No</th> --}}
+          <th scope="col">Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">E-mail</th>
+          <th class="text-center" scope="col">Password</th>
+          <th class="text-center" scope="col">Edit</th>
+          <th class="text-center" scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each alluserdata}}
+        <tr>
+          {{!-- <th scope="row">{{@index}}</th> --}}
+          <td>{{name}}</td>
+          <td>{{lname}}</td>
+          <td>{{email}}</td>
+          <td class="text-center">{{pass}}</td>
+          <td class="text-center"><a href="/useredit/{{_id}}"><i class="fa fa-light fa-user-pen"></i></a></td>
+          <td class="text-center"><a class="text-danger " onclick="return confirm('Do You Want To Delete')"  href="/removeuser/{{_id}}"><i class="fa fa-light fa-trash"></i></a></td>
+         </tr>
+       {{/each}}
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </div>
+</section>
+
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
